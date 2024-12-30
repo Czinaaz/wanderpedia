@@ -8,8 +8,6 @@ import Map from "./components/Map/Map";
 import PlaceDetails from "./components/PlaceDetails/PlaceDetails";
 
 
-
-
 const App = () => {
     // const [places, setPlaces] = useState([]);
 
