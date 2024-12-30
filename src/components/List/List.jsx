@@ -9,7 +9,6 @@ const List = ({places, childClicked, isLoading}) => {
     const classes = useStyles();
     const [type, setType] = useState("Restaurants");
     const [rating, setRating] = useState("Restaurants");
-
     const [elRefs, setElRefs] = useState([]);
 
     useEffect(() => {
