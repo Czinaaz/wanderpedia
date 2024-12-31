@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/wanderpedia/static/js/main.62fd79d5.js",
+    "index.html": "/wanderpedia/index.html",
+    "main.62fd79d5.js.map": "/wanderpedia/static/js/main.62fd79d5.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.62fd79d5.js"
+  ]
+}
