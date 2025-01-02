@@ -9,29 +9,29 @@ import PlaceDetails from "./components/PlaceDetails/PlaceDetails";
 
 
 const App = () => {
-    // const [places, setPlaces] = useState([]);
+    const [places, setPlaces] = useState([]);
 
-    // const [childClicked, setChildClicked] = useState(null);
+    const [childClicked, setChildClicked] = useState(null);
 
-    // const [coordinates, setCoordinates] = useState({});
-    // const [bounds, setBounds] = useState({});
+    const [coordinates, setCoordinates] = useState({});
+    const [bounds, setBounds] = useState({});
 
     // const[isLoading, setIsLoading] = useState(false);
 
-    // useEffect(()=>{
-    //     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
-    //         setCoordinates({lat: latitude, lng: longitude});
-    //     });
-    // },[]);
+    useEffect(()=>{
+        navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
+            setCoordinates({lat: latitude, lng: longitude});
+        });
+    },[]);
     
-    // useEffect(() => {
-    //     setIsLoading(true);
-    //     getPlacesData(bounds.sw, bounds.ne)
-    //         .then((data) => {
-    //             setPlaces(data);
-    //             setIsLoading(false);
-    //         })
-    // }, [coordinates, bounds]);
+    useEffect(() => {
+        // setIsLoading(true);
+        getPlacesData(bounds.sw, bounds.ne)
+            .then((data) => {
+                setPlaces(data);
+                // setIsLoading(false);
+            })
+    }, [coordinates, bounds]);
 
     return (
         <>
@@ -40,18 +40,18 @@ const App = () => {
             <Grid container spacing={3} style={{width:'100%'}}>
                 <Grid item xs={12} md={4} >
                     <List 
-                        // places={places}
-                        // childClicked={childClicked}
+                        places={places}
+                        childClicked={childClicked}
                         // isLoading={isLoading}
                     />
                 </Grid>
                 <Grid item xs={12} md={8} >
                     <Map
-                        // setCoordinates={setCoordinates}
-                        // setBounds={setBounds}
-                        // coordinates={coordinates}
-                        // places={places}
-                        // setChildClicked={setChildClicked}
+                        setCoordinates={setCoordinates}
+                        setBounds={setBounds}
+                        coordinates={coordinates}
+                        places={places}
+                        setChildClicked={setChildClicked}
 
                     />
                 </Grid>
