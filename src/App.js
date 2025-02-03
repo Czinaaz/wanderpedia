@@ -16,7 +16,23 @@ const App = () => {
     const [coordinates, setCoordinates] = useState({});
     const [bounds, setBounds] = useState({});
 
-    // const[isLoading, setIsLoading] = useState(false);
+    const[isLoading, setIsLoading] = useState(false);
+
+
+    const DEFAULT_COORDINATES = { lat: 37.7749, lng: -122.4194 }; // San Francisco
+
+useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+        ({ coords: { latitude, longitude } }) => {
+            setCoordinates({ lat: latitude, lng: longitude });
+        },
+        () => {
+            console.error("Defaulting to fallback location.");
+            setCoordinates(DEFAULT_COORDINATES);
+        }
+    );
+}, []);
+
 
     useEffect(()=>{
         navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
@@ -25,11 +41,11 @@ const App = () => {
     },[]);
     
     useEffect(() => {
-        // setIsLoading(true);
+        setIsLoading(true);
         getPlacesData(bounds.sw, bounds.ne)
             .then((data) => {
                 setPlaces(data);
-                // setIsLoading(false);
+                setIsLoading(false);
             })
     }, [coordinates, bounds]);
 
@@ -42,7 +58,7 @@ const App = () => {
                     <List 
                         places={places}
                         childClicked={childClicked}
-                        // isLoading={isLoading}
+                        isLoading={isLoading}
                     />
                 </Grid>
                 <Grid item xs={12} md={8} >
