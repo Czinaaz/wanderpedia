@@ -74,7 +74,7 @@ import useStyles from './styles.js';
 
 const Map = ({setCoordinates, setBounds, coordinates, places  }) => {
   const classes = useStyles(); 
-  const isDesktop = useMediaQuery('(max-width: 600px)');
+  const isDesktop = useMediaQuery('(min-width: 600px)');
   
 
 
@@ -100,7 +100,8 @@ const Map = ({setCoordinates, setBounds, coordinates, places  }) => {
             lng={Number(place.longitude)}
             key={i}
           >
-            {isDesktop? (
+            {
+            !isDesktop? (
               <LocationOnOutlinedIcon color='primary' fontSize='large' />
             ) : (
               <Paper elevation={3} className={classes.paper} >
@@ -110,38 +111,13 @@ const Map = ({setCoordinates, setBounds, coordinates, places  }) => {
                 <img 
                   className={classes.pointer}
                   src={place.photo ? place.photo.images.large.url : 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}
+                  alt={place.name}
                 />
               </Paper>
             )
           } 
           </div>
         ))}
-        {/* {places.length && places.map((place, i) => (
-          <div
-            className={classes.markerContainer}
-            lat={Number(place.latitude)}
-            lng={Number(place.longitude)}
-            key={i}
-          >
-            {
-              !isDesktop ? (
-                <LocationOnOutlinedIcon color='primary' fontSize='large' />
-              ) : (
-                <Paper elevation={3} className={classes.paper}>
-                  <Typography className={classes.typography} variant='subtitle2' gutterBottom  >
-                    {place.name}
-                  </Typography>
-                  <img 
-                    className={classes.pointer}
-                    src={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
-                    alt={place.name}
-                  />
-                  <Rating name="read-only" size="small" value={Number(place.rating)} readOnly />
-                </Paper>
-              )
-            }
-          </div>
-        ))} */}
       </GoogleMapReact>
     </div>
   );

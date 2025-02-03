@@ -8,6 +8,16 @@ export default makeStyles((theme)=>({
         display: 'block',
         },
     },
+    mapIcon: {
+        height: '200%', 
+    },
+    logo: {
+        fontSize: '31px',
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+        display: 'block',
+        },
+    },
     search: {
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
